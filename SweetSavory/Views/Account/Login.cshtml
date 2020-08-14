@@ -1,0 +1,25 @@
+@{
+  Layout ="_Layout";
+}
+
+@using SweetSavory.ViewModels
+@model LoginViewModel
+
+@if (User.Identity.IsAuthenticated)
+{
+  <h3>You're currently logged in: @User.Identity.Name!</h3>
+}
+else
+{
+  <h2>Login to your account</h2>
+  <hr/>
+  @using (Html.BeginForm())
+  {
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email)
+    <br>
+    @Html.LabelFor(m => m.Password)
+    @Html.PasswordFor(m => m.Password)
+    <input class="btn btn-danger btn-lg" type="submit" value="Log in"/>
+  }
+}
