@@ -11,10 +11,10 @@ using SweetSavory.Models;
 
 namespace SweetSavory.Controllers
 {
-  public class FlavorsController : Controllers
+  public class FlavorsController : Controller
   {
     private readonly UserManager<ApplicationUser> _userManager;
-    private readonly RecipeBoxContext _db;
+    private readonly SweetSavoryContext _db;
 
     public FlavorsController(UserManager<ApplicationUser> userManager, SweetSavoryContext db)
   {
@@ -64,7 +64,7 @@ namespace SweetSavory.Controllers
         .Include(flavor => flavor.User)
         .FirstOrDefault(flavor => flavor.FlavorId == id);
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      ViewBag.IsCurrentUser = userId != null ? userId == thisRecipe.User.Id : false;    
+      ViewBag.IsCurrentUser = userId != null ? userId == thisFlavor.User.Id : false;    
       return View(thisFlavor);
     }
 
@@ -133,7 +133,7 @@ namespace SweetSavory.Controllers
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
-      var thisFalvor = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).FirstOrDefault(flavors => flavors.FlavorId == id);
+      var thisFlavor = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).FirstOrDefault(flavors => flavors.FlavorId == id);
       if (thisFlavor == null)
       {
         return RedirectToAction("Details", new {id = id});
