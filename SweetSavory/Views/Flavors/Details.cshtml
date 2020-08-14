@@ -1,0 +1,45 @@
+@{
+  Layout = "_Layout";
+}
+
+@using System.Security.Claims
+@model SweetSavory.Models.Flavor
+
+<h1>Flavor Details</h1>
+<hr/>
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+<br>
+<h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
+<br>
+@if(@Model.Treats.Count == 0)
+{
+  <p>This Flavor has not been added to any treats yet</p>
+}
+else
+{
+  <h4>Treats associated with this Flavor:</h4>
+  <ul>
+  @foreach(var join in Model.Treats)
+  {
+    <p>@Html.ActionLink($"{join.Treat.Name}", "Details", "Treats", new { id = join.Treat.TreatId })</p>
+    @if (User.Identity.IsAuthenticated && ViewBag.IsCurrentUser)
+    {
+      @using (Html.BeginForm("DeleteTreat", "Flavors"))
+      {
+        @Html.Hidden("joinId", @join.FlavorTreatId)
+        <input type="submit" value="Delete"/>
+      }
+    }  
+  }
+  </ul>
+}
+<br>
+<p>@Html.ActionLink("Back to flavors", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+@if (User.Identity.IsAuthenticated && ViewBag.IsCurrentUser)
+{
+  <p>@Html.ActionLink("Edit flavor", "Edit", new { id = Model.FlavorId})</p>
+  <p>@Html.ActionLink("Delete flavor", "Delete", new { id = Model.FlavorId })</p>
+  <p>@Html.ActionLink("Add treat", "AddTreat", new { id = Model.FlavorId })</p>
+}  

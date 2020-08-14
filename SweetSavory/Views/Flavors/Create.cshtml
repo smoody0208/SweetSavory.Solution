@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetSavory.Models.Flavor
+
+<h1>Add a new flavor</h1>
+<hr/>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Name)
+  @Html.TextBoxFor(model => model.Name)
+  <br>
+  @Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description)
+  <br>
+  <input type="submit" value="Add new flavor" class="btn btn-danger btn-lg" />
+}
+<br>
+<p>@Html.ActionLink("Back to flavors", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
