@@ -100,7 +100,7 @@ namespace SweetSavory.Controllers
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
       
-      Treat thisTreat = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).FirstOrDefault(treats => treats.TreatId == id);
+      Treat thisTreat = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).FirstOrDefault(treats => treats.TreatId == id);
       if (thisTreat == null)
       {
         return RedirectToAction("Details", new {id = id});
@@ -113,7 +113,7 @@ namespace SweetSavory.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
-      _db.Flavors.Remove(thisFlavor);
+      _db.Treats.Remove(thisTreat);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
@@ -133,7 +133,7 @@ namespace SweetSavory.Controllers
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       var currentUser = await _userManager.FindByIdAsync(userId);
-      var thisTreat = _db.Flavors.Where(entry => entry.User.Id == currentUser.Id).FirstOrDefault(treats => treats.TreatId == id);
+      var thisTreat = _db.Treats.Where(entry => entry.User.Id == currentUser.Id).FirstOrDefault(treats => treats.TreatId == id);
       if (thisTreat == null)
       {
         return RedirectToAction("Details", new {id = id});
