@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetSavory.Models.Treat
+
+<h3> Are you sure you want to delete: @Html.DisplayFor(model => model.Name)!</h3>
+
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete"/>
+}
+
+<button>@Html.ActionLink("Back", "Details", new { id = @Html.ValueFor(model => model.TreatId)})</button>
