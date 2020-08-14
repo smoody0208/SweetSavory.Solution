@@ -1,0 +1,7 @@
+.display-box {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: medium;
+  border: 5px solid orange;
+  text-align: center;
+}
