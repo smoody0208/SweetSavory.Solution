@@ -8,29 +8,45 @@ _This app will allow a user to register for an account and create, update, delet
 
 ## Specifications
 
-1. **Behavior:** The user is welcomed with a splash page and given the option to register as a new user or sign into an exisiting account.
-* **Input Example:** "Create Account" or "Login"
-* **Output Example:** / or / 
+1. **Behavior:** The user is welcomed with a splash page and given the option to register as a new user.
+* **Input Example:** "Create Account"
+* **Output Example:** /Account
 
-2. **Behavior:** The user can view all Treats.
+2. **Behavior:** The user can Login to their existing account.
+* **Input Example:** "Login"
+* **Output Example:** /Account/Login
+
+3. **Behavior:** The user can view all Treats.
 * **Input Example:** "View all Treats"
 * **Output Example:** /Treats
 
-3. **Behavior:** The user can add new Treats.
+4. **Behavior:** The user can view all Flavors.
+* **Input Example:** "View all Treats"
+* **Output Example:** /Flavors
+
+5. **Behavior:** The user can view a Flavors details.
+* **Input Example:** "Flavor"
+* **Output Example:** /Flavors/Details
+
+6. **Behavior:** The user can view a Treats details.
+* **Input Example:** "Treat"
+* **Output Example:** /Treats/Details
+
+7. **Behavior:** The user can add new Treats.
 * **Input Example:** "Add a New Treat"
 * **Output Example:** /Treats/Create
 
-4. **Behavior:** The user can add a new Flavor to their Treats.
+8. **Behavior:** The user can add a new Flavor to their Treats.
 * **Input Example:** "Add new Flavor"
-* **Output Example:** //
+* **Output Example:** /Flavor/Create
 
-5. **Behavior:** The user can edit exisiting Treats/Flavors.
+9. **Behavior:** The user can edit exisiting Treats/Flavors.
 * **Input Example:** "Edit Treats" or "Edit Flavors".
-* **Output Example:** ///{}
+* **Output Example:** /Treats/Edit/{TreatId} or /Flavors/Edit/{FlavorId}
 
-6. **Behavior:** The program will allow the user to delete Treats and Flavors.
+10. **Behavior:** The program will allow the user to delete Treats and Flavors.
 * **Input Example:** "Delete Treats" or "Delete Flavors"
-* **Output Example:** ///{}
+* **Output Example:** /Treats/Delete/{TreatId} or /Flavors/Delete/{FlavorId}
 
 ## Setup/Installation Requirements
 * .NET Core 2.2 will need to be installed, it can be found here https://dotnet.microsoft.com/download/dotnet-core/2.2
@@ -38,14 +54,12 @@ _This app will allow a user to register for an account and create, update, delet
 * For Windows users, download MySQL here: https://dev.mysql.com/downloads/file/?id=484919
 * Install MySQL and set the system path, more information on how to do that can be found here: https://www.learnhowtoprogram.com/c-and-net/getting-started-with-c/installing-and-configuring-mysql
 * Enter the following commands to create the necessary database and tables:
-* Clone the GitHub repository by running `git clone https://github.com/smoody0208/SweetSavory.Solution.git` in the terminal
-* Navigate to the `SweetSavory.Solution` folder
-* Navigate to the `SweetSavory` subfolder and run `dotnet restore`
-* Run `dotnet build` to build
-* Next run the command `dotnet ef database update` to update/create the schema.
+* Clone the GitHub repository by running `git clone https://github.com/smoody0208/SweetSavory.Solution.git` in the terminal.
+* Navigate to the `SweetSavory.Solution` folder.
+* Navigate to the `SweetSavory` subfolder and run `dotnet restore`.
+* Next run the command `dotnet ef database update` to update/create the schema using the most recent Migration.
 * Then run `dotnet build` to build the application.
-* The web app will now be available on `http://localhost:5000/` in your browser.
-
+* The web app will now be available for you to view on `http://localhost:5000/`.
 ## Known Bugs and Support
 No know bugs.
 
