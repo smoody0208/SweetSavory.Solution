@@ -11,24 +11,14 @@
       <div class="jumbotron jumbotron-fluid">
         <div class="container"> 
           <div class="navigator row">
-            <div class="col-md-2">
+            <div class="col-md-1">
               @Html.ActionLink("Home", "Index", "Home")
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
               @Html.ActionLink("Flavors", "Index", "Flavors")
             </div>
-            <div class="col-md-2">
+            <div class="col-md-1">
               @Html.ActionLink("Treats", "Index", "Treats")
-            </div>
-            <div class="col-md-6">
-              <form action="/" method="post">
-                <select name="searchOption" id="searchOption">
-                  <option value="flavors">Search Tags</option>
-                  <option value="treats">Search Ingredients</option>
-                </select>
-                <input name="searchString" id="searchString" type="search" placeholder="Search">
-                <button type="submit">Search</button>
-              </form>
             </div>
           </div>
           <center><h1 class="display-4">Sweet and Savory Bakery</h1>
